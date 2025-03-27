@@ -6,72 +6,46 @@
     <title>Test d'Allemand Complet - 40 Questions</title>
     <style>
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            max-width: 900px;
+            font-family: Arial, sans-serif;
+            max-width: 800px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #f8f9fa;
+            background-color: #f5f5f5;
             line-height: 1.6;
-            color: #333;
         }
         h1 {
-            color: #2c3e50;
+            color: #333;
             text-align: center;
-            margin-bottom: 10px;
-        }
-        .subtitle {
-            text-align: center;
-            color: #7f8c8d;
-            margin-bottom: 30px;
         }
         .question {
             background-color: white;
-            padding: 18px;
+            padding: 15px;
             margin-bottom: 15px;
-            border-radius: 10px;
-            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
-        }
-        .question h3 {
-            margin-top: 0;
-            color: #2c3e50;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
         .options {
-            margin-left: 15px;
-        }
-        .options label {
-            display: block;
-            margin: 8px 0;
-            padding: 8px;
-            border-radius: 5px;
-        }
-        .options label:hover {
-            background-color: #f0f0f0;
+            margin-left: 20px;
         }
         button {
-            background-color: #3498db;
+            background-color: #4CAF50;
             color: white;
             border: none;
-            padding: 12px 25px;
+            padding: 10px 20px;
             text-align: center;
-            font-size: 18px;
-            margin: 25px auto;
+            font-size: 16px;
+            margin: 20px auto;
             display: block;
             cursor: pointer;
-            border-radius: 30px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
-        button:hover {
-            background-color: #2980b9;
+            border-radius: 5px;
         }
         #result {
-            margin-top: 30px;
-            padding: 25px;
-            border-radius: 10px;
+            font-weight: bold;
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 5px;
             text-align: center;
             background-color: white;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
         }
         .correct {
             background-color: #e8f5e9;
@@ -81,196 +55,164 @@
             background-color: #ffebee;
             border-left: 4px solid #e74c3c;
         }
-        .level-info {
-            margin-top: 30px;
-            padding: 20px;
-            background-color: #e3f2fd;
-            border-radius: 8px;
-            border-left: 6px solid #2196F3;
-        }
         .progress-container {
             width: 100%;
-            background-color: #ecf0f1;
-            border-radius: 10px;
-            margin: 25px 0;
-            height: 35px;
-            overflow: hidden;
+            background-color: #ddd;
+            border-radius: 5px;
+            margin: 20px 0;
         }
         .progress-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #3498db, #2ecc71);
-            border-radius: 10px;
+            height: 30px;
+            background-color: #4CAF50;
+            border-radius: 5px;
             text-align: center;
-            line-height: 35px;
+            line-height: 30px;
             color: white;
-            font-weight: bold;
+            transition: width 0.5s;
         }
         .hidden {
             display: none;
         }
         .level-badge {
             display: inline-block;
-            padding: 8px 15px;
-            border-radius: 20px;
+            padding: 5px 10px;
+            border-radius: 15px;
             font-weight: bold;
-            margin: 10px 5px;
-            font-size: 18px;
+            margin: 10px 0;
         }
-        .a1 { background-color: #ffcdd2; color: #c62828; }
-        .a2 { background-color: #ffcc80; color: #e65100; }
-        .b1 { background-color: #c8e6c9; color: #2e7d32; }
-        .b2 { background-color: #bbdefb; color: #1565c0; }
-        .c1 { background-color: #d1c4e9; color: #4527a0; }
-        .c2 { background-color: #f8bbd0; color: #ad1457; }
-        .cecr-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 20px 0;
-        }
-        .cecr-table th, .cecr-table td {
-            padding: 12px;
-            text-align: left;
-            border-bottom: 1px solid #ddd;
-        }
-        .cecr-table th {
-            background-color: #f2f2f2;
+        .a1 { background-color: #ffcccc; color: #990000; }
+        .a2 { background-color: #ffebcc; color: #996300; }
+        .b1 { background-color: #ccffcc; color: #009900; }
+        .b2 { background-color: #cce5ff; color: #006699; }
+        .level-info {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #e7f3fe;
+            border-left: 6px solid #2196F3;
         }
     </style>
 </head>
 <body>
-    <h1>Test Complet d'Allemand</h1>
-    <div class="subtitle">40 questions - Évaluation selon le Cadre Européen Commun de Référence</div>
+    <h1>Test de Connaissance en Allemand</h1>
+    <p style="text-align: center;">40 questions - Évaluation CECR (A1 à B2)</p>
     
     <div id="quiz-container">
-        <!-- Questions 1-10 - Niveau A1 -->
+        <!-- Niveau A1 -->
         <div class="question" id="q1">
             <h3>1. Comment dit-on "bonjour" en allemand ?</h3>
             <div class="options">
                 <label><input type="radio" name="q1" value="a"> Guten Morgen</label>
                 <label><input type="radio" name="q1" value="b"> Hallo</label>
                 <label><input type="radio" name="q1" value="c"> Auf Wiedersehen</label>
-                <label><input type="radio" name="q1" value="d"> Danke</label>
             </div>
         </div>
 
         <div class="question" id="q2">
-            <h3>2. Quelle est la traduction de "merci" en allemand ?</h3>
+            <h3>2. Comment dit-on "merci" en allemand ?</h3>
             <div class="options">
                 <label><input type="radio" name="q2" value="a"> Bitte</label>
-                <label><input type="radio" name="q2" value="b"> Entschuldigung</label>
-                <label><input type="radio" name="q2" value="c"> Danke</label>
-                <label><input type="radio" name="q2" value="d"> Ja</label>
+                <label><input type="radio" name="q2" value="b"> Danke</label>
+                <label><input type="radio" name="q2" value="c"> Entschuldigung</label>
             </div>
         </div>
 
         <div class="question" id="q3">
-            <h3>3. Comment dit-on "je m'appelle" en allemand ?</h3>
+            <h3>3. Comment dit-on "au revoir" en allemand ?</h3>
             <div class="options">
-                <label><input type="radio" name="q3" value="a"> Ich bin</label>
-                <label><input type="radio" name="q3" value="b"> Ich heiße</label>
-                <label><input type="radio" name="q3" value="c"> Ich habe</label>
-                <label><input type="radio" name="q3" value="d"> Ich komme</label>
+                <label><input type="radio" name="q3" value="a"> Guten Tag</label>
+                <label><input type="radio" name="q3" value="b"> Auf Wiedersehen</label>
+                <label><input type="radio" name="q3" value="c"> Guten Abend</label>
             </div>
         </div>
 
         <div class="question" id="q4">
-            <h3>4. Quelle phrase signifie "Comment allez-vous ?"</h3>
+            <h3>4. Comment dit-on "s'il vous plaît" en allemand ?</h3>
             <div class="options">
-                <label><input type="radio" name="q4" value="a"> Wie geht es dir?</label>
-                <label><input type="radio" name="q4" value="b"> Woher kommst du?</label>
-                <label><input type="radio" name="q4" value="c"> Wie heißt du?</label>
-                <label><input type="radio" name="q4" value="d"> Wie alt bist du?</label>
+                <label><input type="radio" name="q4" value="a"> Danke</label>
+                <label><input type="radio" name="q4" value="b"> Entschuldigung</label>
+                <label><input type="radio" name="q4" value="c"> Bitte</label>
             </div>
         </div>
 
         <div class="question" id="q5">
-            <h3>5. Comment dit-on "au revoir" en allemand ?</h3>
+            <h3>5. Comment dit-on "je m'appelle" en allemand ?</h3>
             <div class="options">
-                <label><input type="radio" name="q5" value="a"> Guten Tag</label>
-                <label><input type="radio" name="q5" value="b"> Auf Wiedersehen</label>
-                <label><input type="radio" name="q5" value="c"> Bis später</label>
-                <label><input type="radio" name="q5" value="d"> Tschüss</label>
+                <label><input type="radio" name="q5" value="a"> Ich bin</label>
+                <label><input type="radio" name="q5" value="b"> Ich heiße</label>
+                <label><input type="radio" name="q5" value="c"> Ich habe</label>
             </div>
         </div>
 
         <div class="question" id="q6">
-            <h3>6. Comment dit-on "s'il vous plaît" en allemand ?</h3>
+            <h3>6. Comment dit-on "je ne comprends pas" en allemand ?</h3>
             <div class="options">
-                <label><input type="radio" name="q6" value="a"> Danke</label>
-                <label><input type="radio" name="q6" value="b"> Entschuldigung</label>
-                <label><input type="radio" name="q6" value="c"> Bitte</label>
-                <label><input type="radio" name="q6" value="d"> Gerne</label>
+                <label><input type="radio" name="q6" value="a"> Ich weiß nicht</label>
+                <label><input type="radio" name="q6" value="b"> Ich verstehe nicht</label>
+                <label><input type="radio" name="q6" value="c"> Ich spreche nicht</label>
             </div>
         </div>
 
         <div class="question" id="q7">
-            <h3>7. Comment dit-on "je ne comprends pas" en allemand ?</h3>
+            <h3>7. Comment dit-on "excusez-moi" en allemand ?</h3>
             <div class="options">
-                <label><input type="radio" name="q7" value="a"> Ich weiß nicht</label>
-                <label><input type="radio" name="q7" value="b"> Ich verstehe nicht</label>
-                <label><input type="radio" name="q7" value="c"> Ich spreche nicht</label>
-                <label><input type="radio" name="q7" value="d"> Ich kann nicht</label>
+                <label><input type="radio" name="q7" value="a"> Danke</label>
+                <label><input type="radio" name="q7" value="b"> Entschuldigung</label>
+                <label><input type="radio" name="q7" value="c"> Bitte</label>
             </div>
         </div>
 
         <div class="question" id="q8">
-            <h3>8. Comment dit-on "excusez-moi" en allemand ?</h3>
+            <h3>8. Comment dit-on "comment allez-vous ?" en allemand ?</h3>
             <div class="options">
-                <label><input type="radio" name="q8" value="a"> Entschuldigung</label>
-                <label><input type="radio" name="q8" value="b"> Danke</label>
-                <label><input type="radio" name="q8" value="c"> Bitte</label>
-                <label><input type="radio" name="q8" value="d"> Verzeihung</label>
+                <label><input type="radio" name="q8" value="a"> Wie geht es dir?</label>
+                <label><input type="radio" name="q8" value="b"> Wie heißt du?</label>
+                <label><input type="radio" name="q8" value="c"> Woher kommst du?</label>
             </div>
         </div>
 
         <div class="question" id="q9">
-            <h3>9. Comment dit-on "je suis français(e)" en allemand ?</h3>
+            <h3>9. Comment dit-on "je voudrais" en allemand ?</h3>
             <div class="options">
-                <label><input type="radio" name="q9" value="a"> Ich komme aus Frankreich</label>
-                <label><input type="radio" name="q9" value="b"> Ich bin französisch</label>
-                <label><input type="radio" name="q9" value="c"> Ich spreche Französisch</label>
-                <label><input type="radio" name="q9" value="d"> Ich liebe Frankreich</label>
+                <label><input type="radio" name="q9" value="a"> Ich will</label>
+                <label><input type="radio" name="q9" value="b"> Ich möchte</label>
+                <label><input type="radio" name="q9" value="c"> Ich kann</label>
             </div>
         </div>
 
         <div class="question" id="q10">
-            <h3>10. Comment dit-on "je voudrais" en allemand ?</h3>
+            <h3>10. Comment dit-on "je suis français" en allemand ?</h3>
             <div class="options">
-                <label><input type="radio" name="q10" value="a"> Ich will</label>
-                <label><input type="radio" name="q10" value="b"> Ich möchte</label>
-                <label><input type="radio" name="q10" value="c"> Ich brauche</label>
-                <label><input type="radio" name="q10" value="d"> Ich habe</label>
+                <label><input type="radio" name="q10" value="a"> Ich komme aus Frankreich</label>
+                <label><input type="radio" name="q10" value="b"> Ich bin französisch</label>
+                <label><input type="radio" name="q10" value="c"> Ich spreche Französisch</label>
             </div>
         </div>
 
-        <!-- Questions 11-20 - Niveau A2 -->
+        <!-- Niveau A2 -->
         <div class="question" id="q11">
             <h3>11. Quel est le genre du mot "Haus" (maison) ?</h3>
             <div class="options">
                 <label><input type="radio" name="q11" value="a"> der</label>
                 <label><input type="radio" name="q11" value="b"> die</label>
                 <label><input type="radio" name="q11" value="c"> das</label>
-                <label><input type="radio" name="q11" value="d"> die (pluriel)</label>
             </div>
         </div>
 
         <div class="question" id="q12">
-            <h3>12. Comment conjugue-t-on "sein" (être) à la 1ère personne du singulier ?</h3>
+            <h3>12. Comment conjugue-t-on "sein" (être) à la 1ère personne ?</h3>
             <div class="options">
                 <label><input type="radio" name="q12" value="a"> bin</label>
                 <label><input type="radio" name="q12" value="b"> bist</label>
                 <label><input type="radio" name="q12" value="c"> ist</label>
-                <label><input type="radio" name="q12" value="d"> sind</label>
             </div>
         </div>
 
         <div class="question" id="q13">
-            <h3>13. Quelle phrase est correcte pour dire "J'ai un chat" ?</h3>
+            <h3>13. Comment dit-on "j'ai un chat" en allemand ?</h3>
             <div class="options">
                 <label><input type="radio" name="q13" value="a"> Ich bin eine Katze</label>
                 <label><input type="radio" name="q13" value="b"> Ich habe eine Katze</label>
                 <label><input type="radio" name="q13" value="c"> Ich mag Katzen</label>
-                <label><input type="radio" name="q13" value="d"> Ich sehe eine Katze</label>
             </div>
         </div>
 
@@ -280,7 +222,6 @@
                 <label><input type="radio" name="q14" value="a"> Es gibt</label>
                 <label><input type="radio" name="q14" value="b"> Es ist</label>
                 <label><input type="radio" name="q14" value="c"> Es hat</label>
-                <label><input type="radio" name="q14" value="d"> Es macht</label>
             </div>
         </div>
 
@@ -290,7 +231,6 @@
                 <label><input type="radio" name="q15" value="a"> Ich komme zur Schule</label>
                 <label><input type="radio" name="q15" value="b"> Ich gehe zur Schule</label>
                 <label><input type="radio" name="q15" value="c"> Ich bin in der Schule</label>
-                <label><input type="radio" name="q15" value="d"> Ich habe Schule</label>
             </div>
         </div>
 
@@ -300,7 +240,6 @@
                 <label><input type="radio" name="q16" value="a"> Ich will</label>
                 <label><input type="radio" name="q16" value="b"> Ich muss</label>
                 <label><input type="radio" name="q16" value="c"> Ich kann</label>
-                <label><input type="radio" name="q16" value="d"> Ich mag</label>
             </div>
         </div>
 
@@ -310,7 +249,6 @@
                 <label><input type="radio" name="q17" value="a"> Ich will</label>
                 <label><input type="radio" name="q17" value="b"> Ich muss</label>
                 <label><input type="radio" name="q17" value="c"> Ich kann</label>
-                <label><input type="radio" name="q17" value="d"> Ich mag</label>
             </div>
         </div>
 
@@ -320,7 +258,6 @@
                 <label><input type="radio" name="q18" value="a"> Ich will</label>
                 <label><input type="radio" name="q18" value="b"> Ich muss</label>
                 <label><input type="radio" name="q18" value="c"> Ich kann</label>
-                <label><input type="radio" name="q18" value="d"> Ich mag</label>
             </div>
         </div>
 
@@ -330,7 +267,6 @@
                 <label><input type="radio" name="q19" value="a"> Es ist kalt</label>
                 <label><input type="radio" name="q19" value="b"> Es regnet</label>
                 <label><input type="radio" name="q19" value="c"> Es ist schön</label>
-                <label><input type="radio" name="q19" value="d"> Es ist windig</label>
             </div>
         </div>
 
@@ -338,20 +274,18 @@
             <h3>20. Comment dit-on "j'aime" en allemand ?</h3>
             <div class="options">
                 <label><input type="radio" name="q20" value="a"> Ich will</label>
-                <label><input type="radio" name="q20" value="b"> Ich muss</label>
+                <label><input type="radio" name="q20" value="b"> Ich mag</label>
                 <label><input type="radio" name="q20" value="c"> Ich kann</label>
-                <label><input type="radio" name="q20" value="d"> Ich mag</label>
             </div>
         </div>
 
-        <!-- Questions 21-30 - Niveau B1 -->
+        <!-- Niveau B1 -->
         <div class="question" id="q21">
-            <h3>21. Quelle phrase est correcte pour dire "J'ai 25 ans" ?</h3>
+            <h3>21. Comment dit-on "j'ai 25 ans" en allemand ?</h3>
             <div class="options">
                 <label><input type="radio" name="q21" value="a"> Ich bin 25 Jahre alt</label>
                 <label><input type="radio" name="q21" value="b"> Ich habe 25 Jahre</label>
-                <label><input type="radio" name="q21" value="c"> Ich mache 25 Jahre</label>
-                <label><input type="radio" name="q21" value="d"> Ich bin 25 Jahre</label>
+                <label><input type="radio" name="q21" value="c"> Ich bin 25 Jahre</label>
             </div>
         </div>
 
@@ -361,27 +295,24 @@
                 <label><input type="radio" name="q22" value="a"> aber</label>
                 <label><input type="radio" name="q22" value="b"> denn</label>
                 <label><input type="radio" name="q22" value="c"> weil</label>
-                <label><input type="radio" name="q22" value="d"> oder</label>
             </div>
         </div>
 
         <div class="question" id="q23">
-            <h3>23. Quelle est la forme correcte au passé de "ich gehe" (je vais) ?</h3>
+            <h3>23. Quel est le passé de "ich gehe" (je vais) ?</h3>
             <div class="options">
                 <label><input type="radio" name="q23" value="a"> ich ging</label>
                 <label><input type="radio" name="q23" value="b"> ich bin gegangen</label>
                 <label><input type="radio" name="q23" value="c"> ich habe gegangen</label>
-                <label><input type="radio" name="q23" value="d"> ich war gegangen</label>
             </div>
         </div>
 
         <div class="question" id="q24">
-            <h3>24. Comment dit-on "je voudrais boire quelque chose" ?</h3>
+            <h3>24. Comment dit-on "je voudrais boire" en allemand ?</h3>
             <div class="options">
-                <label><input type="radio" name="q24" value="a"> Ich will etwas trinken</label>
-                <label><input type="radio" name="q24" value="b"> Ich möchte etwas trinken</label>
-                <label><input type="radio" name="q24" value="c"> Ich trinke etwas</label>
-                <label><input type="radio" name="q24" value="d"> Ich habe Durst</label>
+                <label><input type="radio" name="q24" value="a"> Ich will trinken</label>
+                <label><input type="radio" name="q24" value="b"> Ich möchte trinken</label>
+                <label><input type="radio" name="q24" value="c"> Ich trinke</label>
             </div>
         </div>
 
@@ -391,7 +322,6 @@
                 <label><input type="radio" name="q25" value="a"> Ich gebe der Mann das Buch</label>
                 <label><input type="radio" name="q25" value="b"> Ich gebe den Mann das Buch</label>
                 <label><input type="radio" name="q25" value="c"> Ich gebe dem Mann das Buch</label>
-                <label><input type="radio" name="q25" value="d"> Ich gebe die Mann das Buch</label>
             </div>
         </div>
 
@@ -401,7 +331,6 @@
                 <label><input type="radio" name="q26" value="a"> für</label>
                 <label><input type="radio" name="q26" value="b"> seit</label>
                 <label><input type="radio" name="q26" value="c"> von</label>
-                <label><input type="radio" name="q26" value="d"> ab</label>
             </div>
         </div>
 
@@ -411,17 +340,15 @@
                 <label><input type="radio" name="q27" value="a"> weil</label>
                 <label><input type="radio" name="q27" value="b"> denn</label>
                 <label><input type="radio" name="q27" value="c"> obwohl</label>
-                <label><input type="radio" name="q27" value="d"> deshalb</label>
             </div>
         </div>
 
         <div class="question" id="q28">
-            <h3>28. Quelle est la traduction de "je me suis levé tôt ce matin" ?</h3>
+            <h3>28. Comment dit-on "je me suis levé tôt" en allemand ?</h3>
             <div class="options">
-                <label><input type="radio" name="q28" value="a"> Ich stehe früh auf diesen Morgen</label>
-                <label><input type="radio" name="q28" value="b"> Ich bin früh aufgestanden diesen Morgen</label>
-                <label><input type="radio" name="q28" value="c"> Ich habe früh aufgestanden diesen Morgen</label>
-                <label><input type="radio" name="q28" value="d"> Ich stand früh auf diesen Morgen</label>
+                <label><input type="radio" name="q28" value="a"> Ich stehe früh auf</label>
+                <label><input type="radio" name="q28" value="b"> Ich bin früh aufgestanden</label>
+                <label><input type="radio" name="q28" value="c"> Ich habe früh aufgestanden</label>
             </div>
         </div>
 
@@ -431,38 +358,34 @@
                 <label><input type="radio" name="q29" value="a"> Ich mache es morgen</label>
                 <label><input type="radio" name="q29" value="b"> Ich werde es morgen machen</label>
                 <label><input type="radio" name="q29" value="c"> Ich würde es morgen machen</label>
-                <label><input type="radio" name="q29" value="d"> Ich habe es morgen gemacht</label>
             </div>
         </div>
 
         <div class="question" id="q30">
-            <h3>30. Quelle phrase utilise correctement le subjonctif (Konjunktiv II) ?</h3>
+            <h3>30. Quelle phrase utilise le subjonctif (Konjunktiv II) ?</h3>
             <div class="options">
                 <label><input type="radio" name="q30" value="a"> Wenn ich Zeit habe, gehe ich</label>
                 <label><input type="radio" name="q30" value="b"> Wenn ich Zeit hätte, würde ich gehen</label>
                 <label><input type="radio" name="q30" value="c"> Wenn ich Zeit hatte, ging ich</label>
-                <label><input type="radio" name="q30" value="d"> Wenn ich Zeit haben werde, werde ich gehen</label>
             </div>
         </div>
 
-        <!-- Questions 31-40 - Niveau B2 -->
+        <!-- Niveau B2 -->
         <div class="question" id="q31">
             <h3>31. Quelle est la forme passive de "Man liest das Buch" ?</h3>
             <div class="options">
                 <label><input type="radio" name="q31" value="a"> Das Buch wird gelesen</label>
                 <label><input type="radio" name="q31" value="b"> Das Buch ist gelesen</label>
                 <label><input type="radio" name="q31" value="c"> Das Buch kann gelesen werden</label>
-                <label><input type="radio" name="q31" value="d"> Das Buch liest sich</label>
             </div>
         </div>
 
         <div class="question" id="q32">
-            <h3>32. Comment dit-on "bien qu'il soit malade, il est venu" ?</h3>
+            <h3>32. Comment dit-on "bien qu'il soit malade" en allemand ?</h3>
             <div class="options">
-                <label><input type="radio" name="q32" value="a"> Weil er krank ist, ist er gekommen</label>
-                <label><input type="radio" name="q32" value="b"> Obwohl er krank ist, ist er gekommen</label>
-                <label><input type="radio" name="q32" value="c"> Wenn er krank ist, kommt er</label>
-                <label><input type="radio" name="q32" value="d"> Da er krank ist, ist er gekommen</label>
+                <label><input type="radio" name="q32" value="a"> Weil er krank ist</label>
+                <label><input type="radio" name="q32" value="b"> Obwohl er krank ist</label>
+                <label><input type="radio" name="q32" value="c"> Wenn er krank ist</label>
             </div>
         </div>
 
@@ -472,27 +395,24 @@
                 <label><input type="radio" name="q33" value="a"> Ich lerne, um eine Prüfung zu bestehen</label>
                 <label><input type="radio" name="q33" value="b"> Ich lerne, für eine Prüfung zu bestehen</label>
                 <label><input type="radio" name="q33" value="c"> Ich lerne, damit ich eine Prüfung bestehe</label>
-                <label><input type="radio" name="q33" value="d"> Ich lerne, dass ich eine Prüfung bestehe</label>
             </div>
         </div>
 
         <div class="question" id="q34">
-            <h3>34. Quelle est la traduction de "je regrette d'avoir dit cela" ?</h3>
+            <h3>34. Comment dit-on "je regrette d'avoir dit cela" ?</h3>
             <div class="options">
                 <label><input type="radio" name="q34" value="a"> Ich bedauere, das gesagt zu haben</label>
                 <label><input type="radio" name="q34" value="b"> Ich bedaure, dass ich das gesagt habe</label>
                 <label><input type="radio" name="q34" value="c"> Es tut mir leid, das zu sagen</label>
-                <label><input type="radio" name="q34" value="d"> Ich wünschte, ich hätte das nicht gesagt</label>
             </div>
         </div>
 
         <div class="question" id="q35">
-            <h3>35. Quelle phrase utilise correctement le plus-que-parfait ?</h3>
+            <h3>35. Quelle phrase utilise le plus-que-parfait ?</h3>
             <div class="options">
                 <label><input type="radio" name="q35" value="a"> Nachdem ich gegessen hatte, ging ich spazieren</label>
                 <label><input type="radio" name="q35" value="b"> Nachdem ich aß, ging ich spazieren</label>
                 <label><input type="radio" name="q35" value="c"> Nachdem ich esse, gehe ich spazieren</label>
-                <label><input type="radio" name="q35" value="d"> Nachdem ich gegessen habe, ging ich spazieren</label>
             </div>
         </div>
 
@@ -502,27 +422,24 @@
                 <label><input type="radio" name="q36" value="a"> Ich frage mich, ob...</label>
                 <label><input type="radio" name="q36" value="b"> Ich frage, wenn...</label>
                 <label><input type="radio" name="q36" value="c"> Ich wundere mich, dass...</label>
-                <label><input type="radio" name="q36" value="d"> Ich möchte wissen, ob...</label>
             </div>
         </div>
 
         <div class="question" id="q37">
-            <h3>37. Quelle phrase utilise correctement "je...desto" ?</h3>
+            <h3>37. Quelle phrase utilise "je...desto" correctement ?</h3>
             <div class="options">
                 <label><input type="radio" name="q37" value="a"> Je mehr ich lerne, desto ich verstehe</label>
                 <label><input type="radio" name="q37" value="b"> Je mehr ich lerne, desto mehr verstehe ich</label>
                 <label><input type="radio" name="q37" value="c"> Je ich mehr lerne, desto ich mehr verstehe</label>
-                <label><input type="radio" name="q37" value="d"> Je mehr ich lerne, mehr verstehe ich</label>
             </div>
         </div>
 
         <div class="question" id="q38">
-            <h3>38. Quelle est la traduction de "il aurait dû venir" ?</h3>
+            <h3>38. Comment dit-on "il aurait dû venir" ?</h3>
             <div class="options">
                 <label><input type="radio" name="q38" value="a"> Er sollte kommen</label>
                 <label><input type="radio" name="q38" value="b"> Er müsste kommen</label>
                 <label><input type="radio" name="q38" value="c"> Er hätte kommen sollen</label>
-                <label><input type="radio" name="q38" value="d"> Er würde kommen</label>
             </div>
         </div>
 
@@ -532,7 +449,6 @@
                 <label><input type="radio" name="q39" value="a"> wenn</label>
                 <label><input type="radio" name="q39" value="b"> falls</label>
                 <label><input type="radio" name="q39" value="c"> es sei denn</label>
-                <label><input type="radio" name="q39" value="d"> außer</label>
             </div>
         </div>
 
@@ -542,12 +458,11 @@
                 <label><input type="radio" name="q40" value="a"> Das Auto meines Vaters</label>
                 <label><input type="radio" name="q40" value="b"> Das Auto von meinem Vater</label>
                 <label><input type="radio" name="q40" value="c"> Das Auto meinen Vater</label>
-                <label><input type="radio" name="q40" value="d"> Das Auto meiner Vater</label>
             </div>
         </div>
     </div>
 
-    <button onclick="checkAnswers()">Vérifier les réponses</button>
+    <button id="check-answers">Vérifier les réponses</button>
     
     <div id="result" class="hidden">
         <div class="progress-container">
@@ -556,50 +471,88 @@
         <div id="score-display"></div>
         <div id="level-display"></div>
         <div id="level-description" class="level-info"></div>
-        
-        <table class="cecr-table">
-            <tr>
-                <th>Niveau CECR</th>
-                <th>Score</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td><span class="level-badge a1">A1</span> Débutant</td>
-                <td>0-40%</td>
-                <td>Comprend et utilise des expressions familières et des phrases très simples</td>
-            </tr>
-            <tr>
-                <td><span class="level-badge a2">A2</span> Élémentaire</td>
-                <td>41-60%</td>
-                <td>Peut comprendre des phrases isolées et communiquer lors de tâches simples</td>
-            </tr>
-            <tr>
-                <td><span class="level-badge b1">B1</span> Intermédiaire</td>
-                <td>61-75%</td>
-                <td>Peut comprendre les points essentiels et se débrouiller dans la plupart des situations en voyage</td>
-            </tr>
-            <tr>
-                <td><span class="level-badge b2">B2</span> Intermédiaire supérieur</td>
-                <td>76-90%</td>
-                <td>Peut comprendre le contenu essentiel de sujets concrets ou abstraits et communiquer avec spontanéité</td>
-            </tr>
-            <tr>
-                <td><span class="level-badge c1">C1</span> Avancé</td>
-                <td>91-100%</td>
-                <td>Peut comprendre une grande gamme de textes longs et exigeants et s'exprimer couramment</td>
-            </tr>
-        </table>
     </div>
 
     <script>
-        function checkAnswers() {
-            // Réponses correctes
-            const answers = {
-                q1: "b", q2: "c", q3: "b", q4: "a", q5: "b", 
-                q6: "c", q7: "b", q8: "a", q9: "b", q10: "b",
-                q11: "c", q12: "a", q13: "b", q14: "a", q15: "b",
-                q16: "c", q17: "b", q18: "a", q19: "c", q20: "d",
-                q21: "a", q22: "c", q23: "b", q24: "b", q25: "c",
-                q26: "b", q27: "c", q28: "b", q29: "b", q30: "b",
-                q31: "a", q32: "b", q33: "a", q34: "a", q35: "a",
-                q36: "a", q37: "b", q38: "c", q
+        // Réponses correctes
+        const correctAnswers = {
+            q1: "b", q2: "b", q3: "b", q4: "c", q5: "b",
+            q6: "b", q7: "b", q8: "a", q9: "b", q10: "b",
+            q11: "c", q12: "a", q13: "b", q14: "a", q15: "b",
+            q16: "c", q17: "b", q18: "a", q19: "c", q20: "b",
+            q21: "a", q22: "c", q23: "b", q24: "b", q25: "c",
+            q26: "b", q27: "c", q28: "b", q29: "b", q30: "b",
+            q31: "a", q32: "b", q33: "a", q34: "a", q35: "a",
+            q36: "a", q37: "b", q38: "c", q39: "c", q40: "a"
+        };
+
+        document.getElementById('check-answers').addEventListener('click', function() {
+            let score = 0;
+            const totalQuestions = Object.keys(correctAnswers).length;
+            
+            // Vérifier chaque réponse
+            for (let i = 1; i <= totalQuestions; i++) {
+                const questionId = 'q' + i;
+                const selectedOption = document.querySelector(`input[name="${questionId}"]:checked`);
+                const questionDiv = document.getElementById(questionId);
+                
+                if (selectedOption) {
+                    if (selectedOption.value === correctAnswers[questionId]) {
+                        score++;
+                        questionDiv.classList.add('correct');
+                        questionDiv.classList.remove('incorrect');
+                    } else {
+                        questionDiv.classList.add('incorrect');
+                        questionDiv.classList.remove('correct');
+                    }
+                } else {
+                    questionDiv.classList.remove('correct', 'incorrect');
+                }
+            }
+            
+            // Calculer le pourcentage
+            const percentage = Math.round((score / totalQuestions) * 100);
+            
+            // Afficher les résultats
+            const resultDiv = document.getElementById('result');
+            resultDiv.classList.remove('hidden');
+            document.getElementById('progress-bar').style.width = percentage + '%';
+            document.getElementById('progress-bar').textContent = percentage + '%';
+            document.getElementById('score-display').textContent = `Score: ${score} / ${totalQuestions}`;
+            
+            // Déterminer le niveau
+            let level, levelClass, description;
+            if (percentage >= 90) {
+                level = 'B2';
+                levelClass = 'b2';
+                description = 'Niveau avancé - Vous pouvez comprendre le contenu essentiel de sujets complexes';
+            } else if (percentage >= 70) {
+                level = 'B1';
+                levelClass = 'b1';
+                description = 'Niveau intermédiaire - Vous pouvez comprendre les points essentiels de sujets concrets';
+            } else if (percentage >= 40) {
+                level = 'A2';
+                levelClass = 'a2';
+                description = 'Niveau élémentaire - Vous pouvez comprendre des phrases isolées dans des situations simples';
+            } else {
+                level = 'A1';
+                levelClass = 'a1';
+                description = 'Niveau débutant - Vous pouvez comprendre et utiliser des expressions familières';
+            }
+            
+            document.getElementById('level-display').innerHTML = 
+                `Niveau: <span class="level-badge ${levelClass}">${level}</span>`;
+            document.getElementById('level-description').textContent = description;
+            
+            // Couleur de fond en fonction du score
+            if (percentage >= 70) {
+                resultDiv.style.backgroundColor = '#e8f5e9';
+            } else if (percentage >= 40) {
+                resultDiv.style.backgroundColor = '#fff8e1';
+            } else {
+                resultDiv.style.backgroundColor = '#ffebee';
+            }
+        });
+    </script>
+</body>
+</html>
